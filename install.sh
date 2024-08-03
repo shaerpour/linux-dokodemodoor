@@ -14,9 +14,14 @@ read -p "Remote ws path: " REMOTE_WS_PATH
 
 export REMOTE_UUID REMOTE_HOST_ADDRESS REMOTE_PORT REMOTE_WS_PATH
 
+# Install requirements
+printf "| Install dependencies and requirements |"
+sudo apt update \
+    sudo apt install git unzip --no-install-recommends -y
+
 # Download latest v2ray version
-[ ${OS} == "Linux" ] && printf "| Downloading latest version of v2ray... |\n"
-VERSION=$(curl -Ls -o /dev/null -w %{url_effective} ${BASE_URL}/latest | awk -F/ '{print $NF}')
+VERSION="v5.16.1"
+[ ${OS} == "Linux" ] && printf "| Downloading v2ray version ${VERSION}... |\n"
 curl -LOJs "${BASE_URL}/download/${VERSION}/${FILENAME}"
 
 # Unzip downloaded file
