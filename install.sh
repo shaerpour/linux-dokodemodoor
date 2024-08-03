@@ -17,7 +17,7 @@ export REMOTE_UUID REMOTE_HOST_ADDRESS REMOTE_PORT REMOTE_WS_PATH
 # Install requirements
 printf "| Install dependencies and requirements |"
 sudo apt update \
-    sudo apt install git unzip --no-install-recommends -y
+    && sudo apt install unzip --no-install-recommends -y
 
 # Download latest v2ray version
 VERSION="v5.16.1"
@@ -47,3 +47,5 @@ export IPV4_ADDRESS
 cat v2ray.service.template | envsubst > v2ray.service
 sudo mv v2ray.service /etc/systemd/system/v2ray.service \
 	&& sudo systemctl daemon-reload
+
+printf "| Congrats! You can start using your vpn with sudo systemctl start command |\n"
